@@ -62,6 +62,7 @@ jobs:
           sleep 3
           /usr/local/opt/mariadb@10.5/bin/mysql -e "create user 'casbin_rs'@'localhost' identified by 'casbin_rs'; create database casbin; grant all on \`casbin\`.* to 'casbin_rs'@'localhost';" -urunner
           echo "MYSQLCLIENT_LIB_DIR=/usr/local/opt/mariadb@10.5/lib" >> $GITHUB_ENV
+          brew link --overwrite python@3.11
 
       - name: Setup PostgreSQL & MySQL & SQLite (for windows)
         if: matrix.os == 'windows-latest'
